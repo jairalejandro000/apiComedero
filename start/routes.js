@@ -20,7 +20,21 @@ Route.on('/').render('welcome')
 
 Route.group(() =>{
     Route.get('/Show', 'UserController.getUsers').middleware(['auth:jwt'])
-    Route.post('/Create', 'UserController.createUser').validator('Register')
+    Route.post('/Create', 'UserController.createUser').validator('User')
+    Route.get('/Profile', 'UserController.getUser').middleware(['auth:jwt'])
+    Route.get('/Raspberries', 'UserController.getRasperries')
 }).prefix('/User')
 
-Route.post('/login', 'AuthController.logIn').validator('User').prefix('/Auth')
+Route.group(() =>{
+    Route.post('/Create', 'RaspberryController.createRasp').validator('Raspberry')
+    Route.get('/Show', 'RaspberryController.getRaspberries').middleware(['auth:jwt'])
+}).prefix('/Raspberry')
+
+Route.group(() =>{
+    Route.post('/Create', 'SensorController.createSensor').validator('Sensor')
+    Route.get('/Show', 'SensorController.getSensors').middleware(['auth:jwt'])
+}).prefix('/Sensor')
+
+
+
+Route.post('/Login', 'AuthController.login').validator('User').prefix('/Auth')

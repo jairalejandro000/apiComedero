@@ -11,10 +11,10 @@ class Register {
   get rules () {
     return {
       email: 'required|email|min:10|max:254',
-      password: 'required|min:8|max:16',
+      password: 'required|min:3|max:16',
       username: 'required|max:16',
       name: 'required|min:3|max:40',
-      lastname: 'required|min:5|max:f40'
+      lastname: 'required|min:5|max:40'
     }
   }
   async fails (errorMessages) {

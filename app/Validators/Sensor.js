@@ -1,6 +1,6 @@
 'use strict'
 const ArgsFormatters = use('App/Utils/ArgsFormatter')
-class User {
+class Sensor {
   get formater(){
     return ArgsFormatters
   }
@@ -9,11 +9,7 @@ class User {
   }
   get rules () {
     return {
-      email: 'required|email|min:10|max:254',
-      password: 'min:3|max:16',
-      username: 'max:16',
-      name: 'min:3|max:40',
-      lastname: 'min:5|max:40'
+      name: 'min:3|max:20'
     }
   }
   async fails (errorMessages) {
@@ -21,4 +17,4 @@ class User {
   }
 }
 
-module.exports = User
+module.exports = Sensor

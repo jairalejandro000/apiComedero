@@ -1,6 +1,7 @@
 'use strict'
 const ArgsFormatters = use('App/Utils/ArgsFormatter')
-class User {
+
+class Raspberry {
   get formater(){
     return ArgsFormatters
   }
@@ -9,11 +10,8 @@ class User {
   }
   get rules () {
     return {
-      email: 'required|email|min:10|max:254',
-      password: 'min:3|max:16',
-      username: 'max:16',
-      name: 'min:3|max:40',
-      lastname: 'min:5|max:40'
+      name: 'required|min:3|max:20',
+      user_id: 'required'
     }
   }
   async fails (errorMessages) {
@@ -21,4 +19,4 @@ class User {
   }
 }
 
-module.exports = User
+module.exports = Raspberry

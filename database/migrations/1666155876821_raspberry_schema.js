@@ -7,6 +7,7 @@ class RaspberrySchema extends Schema {
   up () {
     this.create('raspberries', (table) => {
       table.increments()
+      table.string('name', 20).notNullable()
       table.integer('user_id').unsigned().references('id').inTable('users')
       table.timestamps()
     })
