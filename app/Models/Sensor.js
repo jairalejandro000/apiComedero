@@ -4,6 +4,9 @@
 const Model = use('Model')
 
 class Sensor extends Model {
+    static get hidden(){
+        return['created_at', 'updated_at']
+    }
     raspberriessensors(){
         return this.belongsTo('App/Models/RaspberrySensor')
     }

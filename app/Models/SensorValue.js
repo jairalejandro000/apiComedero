@@ -4,6 +4,9 @@
 const Model = use('Model')
 
 class SensorValue extends Model {
+    static get hidden(){
+        return['created_at', 'updated_at']
+    }
     RaspberrySensor(){
         return this.hasMany('App/Models/RaspberrySensor')
     }

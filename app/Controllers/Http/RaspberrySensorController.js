@@ -1,6 +1,66 @@
 'use strict'
+const RaspSensor = use('App/Models/RaspberrySensor')
 
 class RaspberrySensorController {
+    //This method create a new sensor
+    async createRaspSensor({request, response}){
+        try{
+            const raspData = request.only(['sensor_id', 'raspberry_id'])
+            const raspSensor = await RaspSensor.create(raspData)
+            return response.ok(
+                {msg: 'Hecho!',
+                status: true,
+                data: raspSensor})
+        }catch(e){
+            return response.status(400).send(
+                {msg: 'Ocurrió un error',
+                status: false,
+                data: ''})
+        }
+    }
+    //This method return the list of sensors of specific a raspberry
+    async getRaspSensor({request, response}){
+        try{
+            const raspData = request.only(['raspberry_id'])
+            const raspSensors = await RaspSensor.query().with('sensors').where('raspberry_id', raspData.raspberry_id).fetch()
+            return response.ok(
+                {msg: 'Hecho!',
+                status: true,
+                data: raspSensors})
+        }catch(e){
+            return response.status(400).send(
+                {msg: 'Ocurrió un error',
+                status: false,
+                data: ''})
+        }
+    }
+
+    //This method update the sensor in the raspberry
+    async updateRaspSensor({request, response}){
+        try{
+            const raspData = request.only(['sensor_id', 'raspberry_id', 'newSensor_id'])
+            const raspSensor = await RaspSensor.findBy({raspberry_id: raspData.raspberry_id,  sensor_id: raspData.sensor_id})
+            if(raspSensor){
+                raspSensor.sensor_id = raspData.newSensor_id
+                if(await raspSensor.save()){
+                    return response.ok(
+                        {msg: 'Hecho!',
+                        status: true,
+                        data: raspSensor})
+                }else{
+                    return response.status(400).send(
+                        {msg: 'Ocurrió un error',
+                        status: false,
+                        data: ''})
+                }
+            }
+        }catch(e){
+            return response.status(400).send(
+                {msg: 'Ocurrió un error',
+                status: false,
+                data: ''})
+            }
+    }
 }
 
 module.exports = RaspberrySensorController
