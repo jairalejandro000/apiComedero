@@ -22,22 +22,22 @@ Route.group(() =>{
     Route.get('/Show', 'UserController.getUsers').middleware(['auth:jwt'])
     Route.post('/Create', 'UserController.createUser').validator('User')
     Route.get('/Profile', 'UserController.getUser').middleware(['auth:jwt'])
-    Route.get('/Raspberries', 'UserController.getRasperries')
+    Route.get('/Raspberries', 'UserController.getRasperries').middleware(['auth:jwt'])
 }).prefix('/User')
 
 Route.group(() =>{
-    Route.post('/Create', 'RaspberryController.createRasp').validator('Raspberry')
+    Route.post('/Create', 'RaspberryController.createRasp').validator('Raspberry').middleware(['auth:jwt'])
     Route.get('/Show', 'RaspberryController.getRaspberries').middleware(['auth:jwt'])
 }).prefix('/Raspberry')
 
 Route.group(() =>{
-    Route.post('/Create', 'SensorController.createSensor').validator('Sensor')
+    Route.post('/Create', 'SensorController.createSensor').validator('Sensor').middleware(['auth:jwt'])
     Route.get('/Show', 'SensorController.getSensors').middleware(['auth:jwt'])
 }).prefix('/Sensor')
 
 Route.group(() =>{
-    Route.post('/Create', 'RaspberrySensorController.createRaspSensor').validator('RaspSensor')
-    Route.get('/Sensors', 'RaspberrySensorController.getRaspSensor')
+    Route.post('/Create', 'RaspberrySensorController.createRaspSensor').validator('RaspSensor').middleware(['auth:jwt'])
+    Route.get('/Sensors', 'RaspberrySensorController.getRaspSensor').middleware(['auth:jwt'])
     Route.put('/Update', 'RaspberrySensorController.updateRaspSensor').middleware(['auth:jwt'])
 }).prefix('/RaspSensor')
 
