@@ -6,7 +6,7 @@ class UserController {
 
     //This method create a new user
     async createUser({request, response}){
-        try{
+        // try{
             const userData = request.only(['email', 'username', 'password', 'name', 'lastname'])
             if(await User.findBy('email', userData.email)){
                 return response.status(400).send(
@@ -20,12 +20,12 @@ class UserController {
                 status: true,
                 data: user})
 
-        }catch(e){
-            return response.status(400).send(
-                {msg: 'Ocurrió un error',
-                status: false,
-                data: ''})
-        }
+        // }catch(e){
+        //     return response.status(400).send(
+        //         {msg: 'Ocurrió un error',
+        //         status: false,
+        //         data: ''})
+        // }
     }
 
     //This method return the user data
