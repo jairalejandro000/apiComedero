@@ -41,6 +41,11 @@ Route.group(() =>{
     Route.put('/Update', 'RaspberrySensorController.updateRaspSensor').middleware(['auth:jwt'])
 }).prefix('/RaspSensor')
 
+Route.group(() => {
+    Route.post('/Create', 'SensorValueController.createSensorValue').validator('SensorValue').middleware(['auth:jwt'])
+    Route.get('/History/:id', 'SensorValueController.getRaspSensorValues').middleware(['auth:jwt'])
+}).prefix('SensorValues')
+
 
 
 Route.post('/Login', 'AuthController.login').validator('User').prefix('/Auth')

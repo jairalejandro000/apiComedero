@@ -10,7 +10,7 @@ class SensorValueSchema extends Schema {
       table.integer('value_int', 10)
       table.float('value_float', 10, 2)
       table.string('value_string', 10)
-      table.date('date')
+      table.datetime('date')
       table.integer('raspberry_sensor_id').unsigned().references('id').inTable('raspberry_sensors')
       table.timestamps()
     })

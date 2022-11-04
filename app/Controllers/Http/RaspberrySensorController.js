@@ -22,7 +22,7 @@ class RaspberrySensorController {
     async getRaspSensor({request, response}){
         try{
             const raspData = request.only(['raspberry_id'])
-            const raspSensors = await RaspSensor.query().with('sensors').where('raspberry_id', raspData.raspberry_id).fetch()
+            const raspSensors = await RaspSensor.query().with('sensors').with('sensor_values').where('raspberry_id', raspData.raspberry_id).fetch()
             return response.ok(
                 {msg: 'Hecho!',
                 status: true,
