@@ -9,9 +9,6 @@ class SensorValue {
   }
   get rules () {
     return {
-      value_int: 'required',
-      value_flaot: 'required',
-      value_string: 'required',
       date: 'required',
       raspberry_sensor_id: 'required'
     }
