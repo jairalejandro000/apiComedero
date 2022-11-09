@@ -1,11 +1,16 @@
 'use strict'
 const Raspberry = use('App/Models/Raspberry')
+const jwt_decode = use('jwt-decode')
 class RaspberryController {
 
     //This method create a new raspberry
     async createRasp({request, response}){
         try{
-            const raspData = request.only(['name', 'user_id'])
+            const auth = request.headers()
+            const token = auth.authorization
+            const decode = jwt_decode(token);
+            const raspData = request.only(['name'])
+            raspData.user_id = await decode.uid
             const raspberry = await Raspberry.create(raspData)
             return response.ok(
                 {msg: 'Hecho!',
