@@ -17,7 +17,7 @@ const Database = use('Database')
 
 class UserSeeder {
   static async run () {
-    await Database.table('Users').insert([
+    await Database.table('users').insert([
       {
         username: 'Ing Perron',
         name: 'Jair Alejandro',
@@ -31,7 +31,14 @@ class UserSeeder {
         lastname: 'Basura inutil',
         email: 'elprimodeguko@gmail.com',
         password: await Hash.make('soyunpendejo')
-      }
+      },
+      {
+        username: 'Ing Perron',
+        name: 'Jair Alejandro',
+        lastname: 'Martínez Carrillo',
+        email: 'jairalejandro@gru.com',
+        password: await Hash.make('12345678')
+      },
     ]);
   }
 }

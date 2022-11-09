@@ -13,10 +13,12 @@
 /** @type {import('@adonisjs/lucid/src/Factory')} */
 const Factory = use('Factory')
 const UserSeeder = use('./UserSeeder')
+const SensorSeeder = use('./SensorSeeder')
 
 class DatabaseSeeder {
   async run () {
     await UserSeeder.run();
+    await SensorSeeder.run();
   }
 }
 
