@@ -10,10 +10,10 @@ class RaspberrySensor extends Model {
     raspberries(){
         return this.belongsTo('App/Models/Raspberry')
     }
-    sensors(){
+    sensor(){
         return this.belongsTo('App/Models/Sensor')
     }
-    sensor_values(){
+    sensorValue(){
         return this.hasOne('App/Models/SensorValue')
     }
 }

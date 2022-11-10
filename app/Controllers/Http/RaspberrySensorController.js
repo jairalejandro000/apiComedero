@@ -19,20 +19,14 @@ class RaspberrySensorController {
         }
     }
     //This method return the list of sensors of specific a raspberry
-    async getRaspSensor({request, response}){
-        try{
-            const raspData = request.only(['raspberry_id'])
-            const raspSensors = await RaspSensor.query().with('sensors').with('sensor_values').where('raspberry_id', raspData.raspberry_id).fetch()
+    async getRaspSensor({params, response}){
+        
+            const raspSensors = await RaspSensor.query().with('sensor').with('sensorValue').where('raspberry_id', params.id).fetch()
             return response.ok(
                 {msg: 'Hecho!',
                 status: true,
                 data: raspSensors})
-        }catch(e){
-            return response.status(400).send(
-                {msg: 'Ocurrió un error',
-                status: false,
-                data: ''})
-        }
+        
     }
 
     //This method update the sensor in the raspberry
