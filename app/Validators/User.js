@@ -10,14 +10,17 @@ class User {
   get rules () {
     return {
       email: 'required|email|min:10|max:254',
-      password: 'min:3|max:16',
-      username: 'max:16',
-      name: 'min:3|max:40',
-      lastname: 'min:5|max:40'
+      password: 'required|min:3|max:16',
+      username: 'required|max:16',
+      name: 'required|min:3|max:40',
+      lastname: 'required|min:5|max:40'
     }
   }
   async fails (errorMessages) {
-    return this.ctx.response.status(400).send(errorMessages)
+    return this.ctx.response.status(400).send({
+      msg: 'Ocurrió un error',
+      status: false,
+      data: errorMessages})
   }
 }
 

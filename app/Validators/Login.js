@@ -1,7 +1,6 @@
 'use strict'
 const ArgsFormatters = use('App/Utils/ArgsFormatter')
-
-class RaspSensor {
+class Login {
   get formater(){
     return ArgsFormatters
   }
@@ -10,8 +9,8 @@ class RaspSensor {
   }
   get rules () {
     return {
-      sensor_id: 'required',
-      raspberry_id: 'required'
+      email: 'required|email|min:10|max:254',
+      password: 'required|min:3|max:16'
     }
   }
   async fails (errorMessages) {
@@ -22,4 +21,4 @@ class RaspSensor {
   }
 }
 
-module.exports = RaspSensor
+module.exports = Login

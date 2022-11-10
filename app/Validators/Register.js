@@ -18,7 +18,10 @@ class Register {
     }
   }
   async fails (errorMessages) {
-    return this.ctx.response.status(400).send(errorMessages)
+    return this.ctx.response.status(400).send({
+      msg: 'Ocurrió un error',
+      status: false,
+      data: errorMessages})
   }
 }
 

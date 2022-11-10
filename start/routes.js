@@ -19,33 +19,32 @@ const Route = use('Route')
 Route.on('/').render('welcome')
 
 Route.group(() =>{
-    Route.get('/Show', 'UserController.getUsers').middleware(['auth:jwt'])
     Route.post('/Create', 'UserController.createUser').validator('User')
+    Route.get('/Show', 'UserController.getUsers').middleware(['auth:jwt'])
     Route.get('/Profile', 'UserController.getUser').middleware(['auth:jwt'])
     Route.get('/Raspberries', 'UserController.getRasperries').middleware(['auth:jwt'])
 }).prefix('/User')
 
 Route.group(() =>{
-    Route.post('/Create', 'RaspberryController.createRasp').middleware(['auth:jwt'])
-    Route.get('/Show', 'RaspberryController.getRaspberries').middleware(['auth:jwt'])
-}).prefix('/Raspberry')
+    Route.get('/Show', 'RaspberryController.getRaspberries')
+    Route.post('/Create', 'RaspberryController.createRasp').validator('Raspberry')
+}).prefix('/Raspberry').middleware(['auth:jwt'])
 
 Route.group(() =>{
-    Route.post('/Create', 'SensorController.createSensor').validator('Sensor').middleware(['auth:jwt'])
-    Route.get('/Show', 'SensorController.getSensors').middleware(['auth:jwt'])
-}).prefix('/Sensor')
+    Route.get('/Show', 'SensorController.getSensors')
+    Route.post('/Create', 'SensorController.createSensor').validator('Sensor')
+}).prefix('/Sensor').middleware(['auth:jwt'])
 
 Route.group(() =>{
-    Route.post('/Create', 'RaspberrySensorController.createRaspSensor').validator('RaspSensor').middleware(['auth:jwt'])
-    Route.get('/Sensors/:id', 'RaspberrySensorController.getRaspSensor').middleware(['auth:jwt'])
-    Route.put('/Update', 'RaspberrySensorController.updateRaspSensor').middleware(['auth:jwt'])
-}).prefix('/RaspSensor')
+    Route.get('/Sensors/:id', 'RaspberrySensorController.getRaspSensor')
+    Route.post('/Create', 'RaspberrySensorController.createRaspSensor').validator('RaspSensor')
+    Route.put('/Update', 'RaspberrySensorController.updateRaspSensor').validator('RaspSensorUPD')
+}).prefix('/RaspSensor').middleware(['auth:jwt'])
 
 Route.group(() => {
-    Route.post('/Create', 'SensorValueController.createSensorValue').validator('SensorValue').middleware(['auth:jwt'])
-    Route.get('/History/:id', 'SensorValueController.getRaspSensorValues').middleware(['auth:jwt'])
-}).prefix('SensorValues')
+    Route.get('/History/:id', 'SensorValueController.getRaspSensorValues')
+    Route.post('/Create', 'SensorValueController.createSensorValue').validator('SensorValue')
+}).prefix('SensorValues').middleware(['auth:jwt'])
 
 
-
-Route.post('/Login', 'AuthController.login').validator('User').prefix('/Auth')
+Route.post('/Login', 'AuthController.login').validator('Login').prefix('/Auth')

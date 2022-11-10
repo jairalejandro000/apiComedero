@@ -1,7 +1,6 @@
 'use strict'
-const ArgsFormatters = use('App/Utils/ArgsFormatter')
 
-class RaspSensor {
+class RaspSensorUPD {
   get formater(){
     return ArgsFormatters
   }
@@ -11,7 +10,8 @@ class RaspSensor {
   get rules () {
     return {
       sensor_id: 'required',
-      raspberry_id: 'required'
+      raspberry_id: 'required',
+      newSensor_id: 'required'
     }
   }
   async fails (errorMessages) {
@@ -22,4 +22,4 @@ class RaspSensor {
   }
 }
 
-module.exports = RaspSensor
+module.exports = RaspSensorUPD

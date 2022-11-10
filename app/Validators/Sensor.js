@@ -9,11 +9,14 @@ class Sensor {
   }
   get rules () {
     return {
-      name: 'min:3|max:20'
+      name: 'required|min:3|max:20'
     }
   }
   async fails (errorMessages) {
-    return this.ctx.response.status(400).send(errorMessages)
+    return this.ctx.response.status(400).send({
+      msg: 'Ocurrió un error',
+      status: false,
+      data: errorMessages})
   }
 }
 
