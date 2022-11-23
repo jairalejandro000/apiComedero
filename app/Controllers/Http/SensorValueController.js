@@ -19,9 +19,18 @@ class SensorValueController {
         }
     }
 
-    static updateSensorValue({request, response}){
-        return response.ok({request})
-
+    static async updateSensorValue(data){
+        try{
+            const sensorValueData = await data
+            const sensorValue = await SensorValue.create(sensorValueData)
+            return {msg: 'Hecho!',
+                status: true,
+                data: sensorValue}
+        }catch(e){
+            return {msg: 'Ocurrió un error',
+                status: false,
+                data: ''}            
+        }
     }
 
     async getRaspSensorValues({params, response}){

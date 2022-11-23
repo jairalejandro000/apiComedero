@@ -1,19 +1,20 @@
 'use strict'
 
-import SensorValueController from '../Http/SensorValueController'
+const  SensorValueController = require('../Http/SensorValueController')
 class RaspberryController {
   constructor ({ socket, request }) {
     this.socket = socket
     this.request = request
   }
 
-  async onSensorUpdated(data){
-    const sensorValue = await SensorValueController.createSensorValue(data)
-    if(sensorValue){
-      this.socket.broadcastToAll(sensorValue)
+  async onUpdate(data){
+    const sensorValue = await SensorValueController.updateSensorValue(data)
+    if(sensorValue.status == true){
+      await this.socket.broadcastToAll("data", sensorValue)
     }else{
-      this.socket.broadcastToAll("No se pudo actualizar la informacion")
+      await this.socket.broadcastToAll("data", sensorValue)
     }
+   
   }
 
 /*
