@@ -14,7 +14,12 @@ class RaspberryController {
     }else{
       await this.socket.broadcastToAll("data", sensorValue)
     }
-   
+  }
+
+  async onMotor(data){
+    await this.socket.broadcastToAll("data", {
+      "moveMotor": data.motor
+    })
   }
 
 /*
