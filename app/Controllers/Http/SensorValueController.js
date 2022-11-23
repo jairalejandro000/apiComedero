@@ -19,6 +19,11 @@ class SensorValueController {
         }
     }
 
+    static updateSensorValue({request, response}){
+        return response.ok({request})
+
+    }
+
     async getRaspSensorValues({params, response}){
         try{
             const values = await SensorValue.query().where('raspberry_sensor_id', params.id).fetch()
