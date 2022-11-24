@@ -15,7 +15,7 @@ const Factory = use('Factory')
 const Database = use('Database')
 
 class RaspberrySeeder {
-  async run () {
+  static async run () {
     await Database.table('raspberries').insert({
       name: 'Paiton',
       user_id: 3
