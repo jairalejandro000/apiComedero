@@ -31,6 +31,9 @@ class SensorSeeder {
       },
       {
         name: 'Bomba de agua'
+      },
+      {
+        name: 'Humedad'
       }
     ]);
   }

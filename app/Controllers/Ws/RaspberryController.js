@@ -10,15 +10,15 @@ class RaspberryController {
   async onUpdate(data){
     const sensorValue = await SensorValueController.updateSensorValue(data)
     if(sensorValue.status == true){
-      await this.socket.broadcastToAll("data", sensorValue)
+      await this.socket.broadcastToAll('data', sensorValue)
     }else{
-      await this.socket.broadcastToAll("data", sensorValue)
+      await this.socket.broadcastToAll('data', sensorValue)
     }
   }
 
   async onMotor(data){
-    await this.socket.broadcastToAll("data", {
-      "moveMotor": data.motor
+    await this.socket.broadcastToAll('data', {
+      'moveMotor': data.motor
     })
   }
 
