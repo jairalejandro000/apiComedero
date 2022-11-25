@@ -12,7 +12,15 @@
 | For middleware, do check `wsKernel.js` file.
 |
 */
-
 const Ws = use('Ws')
 
 Ws.channel('raspberry', ('RaspberryController'))
+
+const Server = use('Server')
+const io = use('socket.io')(Server.getInstance())
+
+io.sockets.on('connection', newConnection)
+
+function newConnection(socket){
+    console.log('new connection ', socket)
+}
