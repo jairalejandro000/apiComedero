@@ -19,8 +19,12 @@ Ws.channel('raspberry', ('RaspberryController'))
 const Server = use('Server')
 const io = use('socket.io')(Server.getInstance())
 
-io.sockets.on('connection', newConnection)
+io.sockets.on('connection', (socket)=>{
+    console.log('New connection')
 
-function newConnection(socket){
-    console.log('new connection ', socket)
-}
+    socket.on('startMotor', () =>{
+        console.log("prendiendo ")
+        socket.broadcast.emit('Motor')
+    })
+})
+  
