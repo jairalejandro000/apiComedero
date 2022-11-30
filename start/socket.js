@@ -23,8 +23,10 @@ io.sockets.on('connection', (socket)=>{
     console.log('New connection')
 
     socket.on('startMotor', () =>{
-        console.log("prendiendo ")
         socket.broadcast.emit('Motor')
+    })
+    socket.on('startPump', () =>{
+        socket.broadcast.emit('Pump')
     })
 })
   
