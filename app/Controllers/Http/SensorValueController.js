@@ -35,7 +35,7 @@ class SensorValueController {
 
     async getRaspSensorValues({params, response}){
         try{
-            const values = await SensorValue.query().where('raspberry_sensor_id', params.id).fetch()
+            const values = await SensorValue.query().where('raspberry_sensor_id', params.id).orderBy('date', 'desc').fetch()
             return response.ok(
                 {msg: 'Hecho!',
                 status: true,
