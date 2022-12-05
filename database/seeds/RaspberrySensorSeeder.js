@@ -36,6 +36,10 @@ class RaspberrySensorSeeder {
     {
       raspberry_id: 1,
       sensor_id: 6
+    },
+    {
+      raspberry_id: 1,
+      sensor_id: 5
     }])
   }
 }

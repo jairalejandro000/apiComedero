@@ -33,10 +33,10 @@ class UserSeeder {
         password: await Hash.make('soyunpendejo')
       },
       {
-        username: 'Ing Perron',
-        name: 'Jair Alejandro',
-        lastname: 'Martínez Carrillo',
-        email: 'jairalejandro@gru.com',
+        username: 'Danielito',
+        name: 'Daniel',
+        lastname: 'Granados',
+        email: 'danielito@gmial.com',
         password: await Hash.make('12345678')
       },
     ]);
