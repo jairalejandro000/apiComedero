@@ -17,7 +17,7 @@ const Database = use('Database')
 class RaspberrySeeder {
   static async run () {
     await Database.table('raspberries').insert({
-      name: 'Paiton',
+      name: 'Toby',
       user_id: 3
     })
   }
