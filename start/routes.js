@@ -27,6 +27,7 @@ Route.group(() =>{
 
 Route.group(() =>{
     Route.get('/Show', 'RaspberryController.getRaspberries')
+    Route.get('/:id', 'RaspberryController.getRaspberry')
     Route.post('/Create', 'RaspberryController.createRasp').validator('Raspberry')
 }).prefix('/Raspberry').middleware(['auth:jwt'])
 

@@ -39,6 +39,21 @@ class RaspberryController {
                 data: ''})
         }
     }
+    //This method return a raspberry by id
+    async getRaspberry({params, response}){
+        try{
+            const raspberry = await Raspberry.findBy('id', params.id)
+            return response.ok(
+                {msg: 'Hecho!',
+                status: true,
+                data: raspberry})
+        }catch(e){
+            return response.status(400).send(
+                {msg: 'Ocurrió un error',
+                status: false,
+                data: ''})
+        }
+    }
 }
 
 module.exports = RaspberryController
