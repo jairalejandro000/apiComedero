@@ -1,5 +1,6 @@
 'use strict'
 const RaspSensor = use('App/Models/RaspberrySensor')
+const Database = use('Database')
 
 class RaspberrySensorController {
     //This method create a new sensor
@@ -20,13 +21,11 @@ class RaspberrySensorController {
     }
     //This method return the list of sensors of specific a raspberry
     async getRaspSensor({params, response}){
-        
-            const raspSensors = await RaspSensor.query().with('sensor').with('sensorValue').where('raspberry_id', params.id).fetch()
-            return response.ok(
-                {msg: 'Hecho!',
-                status: true,
-                data: raspSensors})
-        
+        const raspSensors = await RaspSensor.query().with('sensor').with('sensorValue').where('raspberry_id', params.id).fetch()
+        return response.ok(
+            {msg: 'Hecho!',
+            status: true,
+            data: raspSensors})
     }
 
     //This method update the sensor in the raspberry
@@ -48,6 +47,41 @@ class RaspberrySensorController {
                         data: ''})
                 }
             }
+        }catch(e){
+            return response.status(400).send(
+                {msg: 'Ocurrió un error',
+                status: false,
+                data: ''})
+            }
+    }
+
+    async addSensors({params, response}){
+        try{
+            await Database.table('raspberry_sensors').insert([
+                {
+                    raspberry_id: params.id,
+                    sensor_id: 1
+                },
+                {
+                    raspberry_id: params.id,
+                    sensor_id: 2
+                },
+                {
+                    raspberry_id: params.id,
+                    sensor_id: 3
+                },
+                {
+                    raspberry_id: params.id,
+                    sensor_id: 4
+                },
+                {
+                    raspberry_id: params.id,
+                    sensor_id: 5
+                }])
+            return response.ok(
+                {msg: 'Hecho!',
+                status: true,
+                data: ''})
         }catch(e){
             return response.status(400).send(
                 {msg: 'Ocurrió un error',
