@@ -22,23 +22,9 @@ class UserSeeder {
         username: 'Ing Perron',
         name: 'Jair Alejandro',
         lastname: 'Martínez Carrillo',
-        email: 'elpython@gmail.com',
-        password: await Hash.make('123')
-      },
-      {
-        username: 'Pendejo',
-        name: 'Gutty mierda',
-        lastname: 'Basura inutil',
-        email: 'elprimodeguko@gmail.com',
-        password: await Hash.make('soyunpendejo')
-      },
-      {
-        username: 'Danielito',
-        name: 'Daniel',
-        lastname: 'Granados',
-        email: 'danielito@gmial.com',
+        email: 'jairalejandro32@outlook.com',
         password: await Hash.make('12345678')
-      },
+      }
     ]);
   }
 }

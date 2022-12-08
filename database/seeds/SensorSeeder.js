@@ -18,22 +18,19 @@ class SensorSeeder {
  static async run () {
     await Database.table('sensors').insert([
       {
-        name: 'Ultrasónico'
+        name: 'Dispensador'
       },
       {
-        name: 'Temperatura'
+        name: 'Bocina'
       },
       {
-        name: 'Ultrasónico de agua'
-      },
-      {
-        name: 'Motor a pasos'
+        name: 'Cámara'
       },
       {
         name: 'Bomba de agua'
       },
       {
-        name: 'Humedad'
+        name: 'Temperatura'
       }
     ]);
   }
