@@ -23,19 +23,15 @@ class RaspberrySensorSeeder {
     },
     {
       raspberry_id: 1,
-      sensor_id: 3
-    },
-    {
-      raspberry_id: 1,
       sensor_id: 2
     },
     {
       raspberry_id: 1,
-      sensor_id: 4
+      sensor_id: 3
     },
     {
       raspberry_id: 1,
-      sensor_id: 6
+      sensor_id: 4
     },
     {
       raspberry_id: 1,
